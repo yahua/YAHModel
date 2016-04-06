@@ -104,8 +104,7 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
                     BLOCK_EXEC(complete, [NSError errorWithDomain:@"" code:YAHRequestErrorCancel userInfo:nil]);
                      return;
                 }
-                NSError *failError = [NSError errorWithDomain:@"当前网络不稳定，请稍后再试" code:YAHRequestErrorOther userInfo:nil];
-                BLOCK_EXEC(complete, failError);
+                BLOCK_EXEC(complete, error);
                 
             });
         }

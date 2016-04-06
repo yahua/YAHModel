@@ -44,26 +44,29 @@ NSURLSessionDataDelegate>
 
 - (NSURLSessionDataTask *)POST:(NSString *)url
                     parameters:(NSDictionary<NSString *, id> *)parameters
+                       headers:(NSDictionary<NSString *, id> *)headers
                        success:(void (^)(NSData *data))success
                        failure:(void (^)(NSError *error))failure {
     
-    return [self dataWithURL:url method:@"POST" parameters:parameters success:success failure:failure];
+    return [self dataWithURL:url method:@"POST" parameters:parameters headers:headers success:success failure:failure];
 }
 
 - (NSURLSessionDataTask *)GET:(NSString *)url
                    parameters:(NSDictionary<NSString *, id> *)parameters
+                      headers:(NSDictionary<NSString *, id> *)headers
                       success:(void (^)(NSData *data))success
                       failure:(void (^)(NSError *error))failure {
     
-    return [self dataWithURL:url method:@"GET" parameters:parameters success:success failure:failure];
+    return [self dataWithURL:url method:@"GET" parameters:parameters headers:headers success:success failure:failure];
 }
 
 - (NSURLSessionDataTask *)DELETE:(NSString *)url
                       parameters:(NSDictionary<NSString *, id> *)parameters
+                         headers:(NSDictionary<NSString *, id> *)headers
                          success:(void (^)(NSData *data))success
                          failure:(void (^)(NSError *error))failure {
     
-    return [self dataWithURL:url method:@"DELETE" parameters:parameters success:success failure:failure];
+    return [self dataWithURL:url method:@"DELETE" parameters:parameters headers:headers success:success failure:failure];
 }
 
 #pragma mark - Private
@@ -71,10 +74,11 @@ NSURLSessionDataDelegate>
 - (NSURLSessionDataTask *)dataWithURL:(NSString *)url
                                method:(NSString *)method
                            parameters:(NSDictionary<NSString *, id> *)parameters
+                              headers:(NSDictionary<NSString *, id> *)headers
                               success:(void (^)(NSData *data))success
                               failure:(void (^)(NSError *error))failure {
     
-    NSURLRequest *request = [YAHURLRequestSerialization requestWithMethod:method URLString:[[NSURL URLWithString:url relativeToURL:self.baseURL] absoluteString] parameters:parameters header:nil];
+    NSURLRequest *request = [YAHURLRequestSerialization requestWithMethod:method URLString:[[NSURL URLWithString:url relativeToURL:self.baseURL] absoluteString] parameters:parameters header:headers];
     
     NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         

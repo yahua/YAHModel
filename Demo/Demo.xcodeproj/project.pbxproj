@@ -23,6 +23,11 @@
 		195F6D921CB4DF5D00B76C9F /* YAHJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D8F1CB4DF5D00B76C9F /* YAHJSONAdapter.m */; };
 		195F6D931CB4DF5D00B76C9F /* YAHURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D911CB4DF5D00B76C9F /* YAHURLRequestSerialization.m */; };
 		195F6D961CB4EE2A00B76C9F /* YAHRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D951CB4EE2A00B76C9F /* YAHRequestManager.m */; };
+		195F6D991CB4F3DD00B76C9F /* TestDataResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D981CB4F3DD00B76C9F /* TestDataResponseInfo.m */; };
+		195F6D9C1CB4FA1400B76C9F /* TestModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D9B1CB4FA1400B76C9F /* TestModelRequest.m */; };
+		195F6D9F1CB4FBA400B76C9F /* MobileModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D9E1CB4FBA400B76C9F /* MobileModelRequest.m */; };
+		195F6DA21CB510A100B76C9F /* MobileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6DA11CB510A100B76C9F /* MobileModel.m */; };
+		195F6DA51CB5113E00B76C9F /* TestRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6DA41CB5113E00B76C9F /* TestRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,16 @@
 		195F6D911CB4DF5D00B76C9F /* YAHURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHURLRequestSerialization.m; sourceTree = "<group>"; };
 		195F6D941CB4EE2A00B76C9F /* YAHRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHRequestManager.h; sourceTree = "<group>"; };
 		195F6D951CB4EE2A00B76C9F /* YAHRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHRequestManager.m; sourceTree = "<group>"; };
+		195F6D971CB4F3DD00B76C9F /* TestDataResponseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDataResponseInfo.h; sourceTree = "<group>"; };
+		195F6D981CB4F3DD00B76C9F /* TestDataResponseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDataResponseInfo.m; sourceTree = "<group>"; };
+		195F6D9A1CB4FA1400B76C9F /* TestModelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModelRequest.h; sourceTree = "<group>"; };
+		195F6D9B1CB4FA1400B76C9F /* TestModelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModelRequest.m; sourceTree = "<group>"; };
+		195F6D9D1CB4FBA400B76C9F /* MobileModelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileModelRequest.h; sourceTree = "<group>"; };
+		195F6D9E1CB4FBA400B76C9F /* MobileModelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileModelRequest.m; sourceTree = "<group>"; };
+		195F6DA01CB510A100B76C9F /* MobileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileModel.h; sourceTree = "<group>"; };
+		195F6DA11CB510A100B76C9F /* MobileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileModel.m; sourceTree = "<group>"; };
+		195F6DA31CB5113E00B76C9F /* TestRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestRequestManager.h; sourceTree = "<group>"; };
+		195F6DA41CB5113E00B76C9F /* TestRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +151,16 @@
 				190CD9881CB3D97C002AE016 /* LaunchScreen.storyboard */,
 				190CD98B1CB3D97C002AE016 /* Info.plist */,
 				190CD97A1CB3D97C002AE016 /* Supporting Files */,
+				195F6D971CB4F3DD00B76C9F /* TestDataResponseInfo.h */,
+				195F6D981CB4F3DD00B76C9F /* TestDataResponseInfo.m */,
+				195F6D9A1CB4FA1400B76C9F /* TestModelRequest.h */,
+				195F6D9B1CB4FA1400B76C9F /* TestModelRequest.m */,
+				195F6D9D1CB4FBA400B76C9F /* MobileModelRequest.h */,
+				195F6D9E1CB4FBA400B76C9F /* MobileModelRequest.m */,
+				195F6DA31CB5113E00B76C9F /* TestRequestManager.h */,
+				195F6DA41CB5113E00B76C9F /* TestRequestManager.m */,
+				195F6DA01CB510A100B76C9F /* MobileModel.h */,
+				195F6DA11CB510A100B76C9F /* MobileModel.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -355,14 +380,19 @@
 			files = (
 				195F6D961CB4EE2A00B76C9F /* YAHRequestManager.m in Sources */,
 				190CD9C61CB3D988002AE016 /* YAHModel.m in Sources */,
+				195F6D9C1CB4FA1400B76C9F /* TestModelRequest.m in Sources */,
+				195F6DA51CB5113E00B76C9F /* TestRequestManager.m in Sources */,
 				190CD9C41CB3D988002AE016 /* YAHActiveObject.m in Sources */,
 				190CD9C71CB3D988002AE016 /* YAHModelRequest.m in Sources */,
 				195F6D921CB4DF5D00B76C9F /* YAHJSONAdapter.m in Sources */,
 				190CD9C11CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.m in Sources */,
 				190CD9821CB3D97C002AE016 /* ViewController.m in Sources */,
 				190CD97F1CB3D97C002AE016 /* AppDelegate.m in Sources */,
+				195F6D9F1CB4FBA400B76C9F /* MobileModelRequest.m in Sources */,
 				190CD97C1CB3D97C002AE016 /* main.m in Sources */,
+				195F6DA21CB510A100B76C9F /* MobileModel.m in Sources */,
 				190CD9C51CB3D988002AE016 /* YAHDataResponseInfo.m in Sources */,
+				195F6D991CB4F3DD00B76C9F /* TestDataResponseInfo.m in Sources */,
 				195F6D931CB4DF5D00B76C9F /* YAHURLRequestSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

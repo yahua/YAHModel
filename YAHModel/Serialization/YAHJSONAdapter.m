@@ -178,7 +178,7 @@
             }
             
             //真正的json key
-            NSString *propertyKey = [[clazz JSONKeyPathsByPropertyKey] objectForKey:propertyName];
+            NSString *propertyKey = [[clazzType JSONKeyPathsByPropertyKey] objectForKey:propertyName];
             
             NSObject *	tempValue = [dic objectForKey:propertyKey];
             NSObject *	value = nil;
@@ -195,7 +195,7 @@
                 }
                 else if ( [NSArray class] == typeClass ) {
                     if ( [tempValue isKindOfClass:[NSArray class]] ) {
-                        NSString *classString = [[clazz convertClassStringDictionary] objectForKey:propertyName];
+                        NSString *classString = [[clazzType convertClassStringDictionary] objectForKey:propertyName];
                         if (classString) {
                             Class convertClass = NSClassFromString(classString);
                             if ( convertClass ) {
@@ -220,7 +220,7 @@
                 }
                 else if ( [NSDictionary class] == typeClass ) {
                     if ( [tempValue isKindOfClass:[NSDictionary class]] ) {
-                        NSString *classString = [[clazz convertClassStringDictionary] objectForKey:propertyName];
+                        NSString *classString = [[clazzType convertClassStringDictionary] objectForKey:propertyName];
                         if ( classString ) {
                             Class convertClass = NSClassFromString(classString);
                             if ( convertClass ) {

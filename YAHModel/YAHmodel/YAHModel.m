@@ -40,16 +40,13 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
     
     self.result = [YAHJSONAdapter modelFromJsonData:data modelClass:self.resultClass];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        if (self.result && [self.result isAdapterSuccess] ) {
-            BLOCK_EXEC(complete, nil);
-        }else {
-            NSString *errMsg = [self.result responseMsg];
-            errMsg = (errMsg)?:@"数据解析失败！！！";
-            BLOCK_EXEC(complete, [NSError errorWithDomain:errMsg code:YAHRequestErrorAdapter userInfo:nil]);
-        }
-    });
+    if (self.result && [self.result isAdapterSuccess] ) {
+        BLOCK_EXEC(complete, nil);
+    }else {
+        NSString *errMsg = [self.result responseMsg];
+        errMsg = (errMsg)?:@"数据解析失败！！！";
+        BLOCK_EXEC(complete, [NSError errorWithDomain:errMsg code:YAHRequestErrorAdapter userInfo:nil]);
+    }
 
 }
 

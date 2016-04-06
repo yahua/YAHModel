@@ -16,16 +16,19 @@
 
 - (NSURLSessionDataTask *)POST:(NSString *)url
                     parameters:(NSDictionary<NSString *, id> *)parameters
+                       headers:(NSDictionary<NSString *, id> *)headers
                        success:(void (^)(NSData *data))success
                        failure:(void (^)(NSError *error))failure;
 
 - (NSURLSessionDataTask *)GET:(NSString *)url
                    parameters:(NSDictionary<NSString *, id> *)parameters
+                      headers:(NSDictionary<NSString *, id> *)headers
                       success:(void (^)(NSData *data))success
                       failure:(void (^)(NSError *error))failure;
 
 - (NSURLSessionDataTask *)DELETE:(NSString *)url
                       parameters:(NSDictionary<NSString *, id> *)parameters
+                         headers:(NSDictionary<NSString *, id> *)headers
                          success:(void (^)(NSData *data))success
                          failure:(void (^)(NSError *error))failure;
 
