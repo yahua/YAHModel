@@ -10,8 +10,10 @@
 #import "YAHModelDefine.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
 @interface YAHModel : NSObject
 
+@property (nonatomic, strong, readonly) __kindof YAHDataResponseInfo *result;
 
 - (instancetype)initWithResultClass:(Class)resultClass;
 
@@ -47,4 +49,5 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)clearCache;
 
 @end
+
 NS_ASSUME_NONNULL_END

@@ -10,15 +10,13 @@
 
 @interface YAHDataResponseInfo : YAHActiveObject
 
-@property (nonatomic, strong) NSNumber *errcode;
-@property (nonatomic, strong) NSString *errmsg;
-
+#pragma mark - 需子类重写
 /**
  *  网络请求是否有效
  *
  *  @return YES json数据有效
  */
-- (BOOL)isValid;
+- (BOOL)isAdapterSuccess;
 
 - (NSInteger)responseCode;
 

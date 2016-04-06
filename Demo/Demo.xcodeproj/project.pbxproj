@@ -16,12 +16,13 @@
 		190CD9951CB3D97C002AE016 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9941CB3D97C002AE016 /* DemoTests.m */; };
 		190CD9A01CB3D97D002AE016 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD99F1CB3D97D002AE016 /* DemoUITests.m */; };
 		190CD9C11CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9B01CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.m */; };
-		190CD9C21CB3D988002AE016 /* YAHJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9B41CB3D988002AE016 /* YAHJSONAdapter.m */; };
-		190CD9C31CB3D988002AE016 /* YAHURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9B61CB3D988002AE016 /* YAHURLRequestSerialization.m */; };
 		190CD9C41CB3D988002AE016 /* YAHActiveObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9B91CB3D988002AE016 /* YAHActiveObject.m */; };
 		190CD9C51CB3D988002AE016 /* YAHDataResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9BB1CB3D988002AE016 /* YAHDataResponseInfo.m */; };
 		190CD9C61CB3D988002AE016 /* YAHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9BD1CB3D988002AE016 /* YAHModel.m */; };
-		190CD9C71CB3D988002AE016 /* YHModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9BF1CB3D988002AE016 /* YHModel.m */; };
+		190CD9C71CB3D988002AE016 /* YAHModelRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 190CD9BF1CB3D988002AE016 /* YAHModelRequest.m */; };
+		195F6D921CB4DF5D00B76C9F /* YAHJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D8F1CB4DF5D00B76C9F /* YAHJSONAdapter.m */; };
+		195F6D931CB4DF5D00B76C9F /* YAHURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D911CB4DF5D00B76C9F /* YAHURLRequestSerialization.m */; };
+		195F6D961CB4EE2A00B76C9F /* YAHRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 195F6D951CB4EE2A00B76C9F /* YAHRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,19 +61,21 @@
 		190CD9A11CB3D97D002AE016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		190CD9AF1CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		190CD9B01CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		190CD9B31CB3D988002AE016 /* YAHJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHJSONAdapter.h; sourceTree = "<group>"; };
-		190CD9B41CB3D988002AE016 /* YAHJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHJSONAdapter.m; sourceTree = "<group>"; };
-		190CD9B51CB3D988002AE016 /* YAHURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHURLRequestSerialization.h; sourceTree = "<group>"; };
-		190CD9B61CB3D988002AE016 /* YAHURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHURLRequestSerialization.m; sourceTree = "<group>"; };
 		190CD9B81CB3D988002AE016 /* YAHActiveObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHActiveObject.h; sourceTree = "<group>"; };
 		190CD9B91CB3D988002AE016 /* YAHActiveObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHActiveObject.m; sourceTree = "<group>"; };
 		190CD9BA1CB3D988002AE016 /* YAHDataResponseInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHDataResponseInfo.h; sourceTree = "<group>"; };
 		190CD9BB1CB3D988002AE016 /* YAHDataResponseInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHDataResponseInfo.m; sourceTree = "<group>"; };
 		190CD9BC1CB3D988002AE016 /* YAHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHModel.h; sourceTree = "<group>"; };
 		190CD9BD1CB3D988002AE016 /* YAHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHModel.m; sourceTree = "<group>"; };
-		190CD9BE1CB3D988002AE016 /* YHModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YHModel.h; sourceTree = "<group>"; };
-		190CD9BF1CB3D988002AE016 /* YHModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YHModel.m; sourceTree = "<group>"; };
+		190CD9BE1CB3D988002AE016 /* YAHModelRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHModelRequest.h; sourceTree = "<group>"; };
+		190CD9BF1CB3D988002AE016 /* YAHModelRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHModelRequest.m; sourceTree = "<group>"; };
 		190CD9C01CB3D988002AE016 /* YAHModelDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHModelDefine.h; sourceTree = "<group>"; };
+		195F6D8E1CB4DF5D00B76C9F /* YAHJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHJSONAdapter.h; sourceTree = "<group>"; };
+		195F6D8F1CB4DF5D00B76C9F /* YAHJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHJSONAdapter.m; sourceTree = "<group>"; };
+		195F6D901CB4DF5D00B76C9F /* YAHURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHURLRequestSerialization.h; sourceTree = "<group>"; };
+		195F6D911CB4DF5D00B76C9F /* YAHURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHURLRequestSerialization.m; sourceTree = "<group>"; };
+		195F6D941CB4EE2A00B76C9F /* YAHRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHRequestManager.h; sourceTree = "<group>"; };
+		195F6D951CB4EE2A00B76C9F /* YAHRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +191,10 @@
 		190CD9B11CB3D988002AE016 /* Serialization */ = {
 			isa = PBXGroup;
 			children = (
+				195F6D8E1CB4DF5D00B76C9F /* YAHJSONAdapter.h */,
+				195F6D8F1CB4DF5D00B76C9F /* YAHJSONAdapter.m */,
+				195F6D901CB4DF5D00B76C9F /* YAHURLRequestSerialization.h */,
+				195F6D911CB4DF5D00B76C9F /* YAHURLRequestSerialization.m */,
 			);
 			path = Serialization;
 			sourceTree = "<group>";
@@ -195,10 +202,8 @@
 		190CD9B21CB3D988002AE016 /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
-				190CD9B31CB3D988002AE016 /* YAHJSONAdapter.h */,
-				190CD9B41CB3D988002AE016 /* YAHJSONAdapter.m */,
-				190CD9B51CB3D988002AE016 /* YAHURLRequestSerialization.h */,
-				190CD9B61CB3D988002AE016 /* YAHURLRequestSerialization.m */,
+				195F6D941CB4EE2A00B76C9F /* YAHRequestManager.h */,
+				195F6D951CB4EE2A00B76C9F /* YAHRequestManager.m */,
 			);
 			path = URLSession;
 			sourceTree = "<group>";
@@ -212,8 +217,8 @@
 				190CD9BB1CB3D988002AE016 /* YAHDataResponseInfo.m */,
 				190CD9BC1CB3D988002AE016 /* YAHModel.h */,
 				190CD9BD1CB3D988002AE016 /* YAHModel.m */,
-				190CD9BE1CB3D988002AE016 /* YHModel.h */,
-				190CD9BF1CB3D988002AE016 /* YHModel.m */,
+				190CD9BE1CB3D988002AE016 /* YAHModelRequest.h */,
+				190CD9BF1CB3D988002AE016 /* YAHModelRequest.m */,
 			);
 			path = YAHmodel;
 			sourceTree = "<group>";
@@ -348,16 +353,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				190CD9C21CB3D988002AE016 /* YAHJSONAdapter.m in Sources */,
+				195F6D961CB4EE2A00B76C9F /* YAHRequestManager.m in Sources */,
 				190CD9C61CB3D988002AE016 /* YAHModel.m in Sources */,
-				190CD9C31CB3D988002AE016 /* YAHURLRequestSerialization.m in Sources */,
 				190CD9C41CB3D988002AE016 /* YAHActiveObject.m in Sources */,
-				190CD9C71CB3D988002AE016 /* YHModel.m in Sources */,
+				190CD9C71CB3D988002AE016 /* YAHModelRequest.m in Sources */,
+				195F6D921CB4DF5D00B76C9F /* YAHJSONAdapter.m in Sources */,
 				190CD9C11CB3D988002AE016 /* YAHNetworkActivityIndicatorManager.m in Sources */,
 				190CD9821CB3D97C002AE016 /* ViewController.m in Sources */,
 				190CD97F1CB3D97C002AE016 /* AppDelegate.m in Sources */,
 				190CD97C1CB3D97C002AE016 /* main.m in Sources */,
 				190CD9C51CB3D988002AE016 /* YAHDataResponseInfo.m in Sources */,
+				195F6D931CB4DF5D00B76C9F /* YAHURLRequestSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +589,7 @@
 				190CD9A61CB3D97D002AE016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		190CD9A71CB3D97D002AE016 /* Build configuration list for PBXNativeTarget "DemoTests" */ = {
 			isa = XCConfigurationList;
@@ -591,6 +598,7 @@
 				190CD9A91CB3D97D002AE016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		190CD9AA1CB3D97D002AE016 /* Build configuration list for PBXNativeTarget "DemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +607,7 @@
 				190CD9AC1CB3D97D002AE016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

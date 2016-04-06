@@ -10,23 +10,19 @@
 
 @implementation YAHDataResponseInfo
 
--(BOOL)isValid {
-    
-    if ([self.errcode integerValue] == 1) {
-        return YES;
-    }
+- (BOOL)isAdapterSuccess {
     
     return NO;
 }
 
 - (NSInteger)responseCode {
     
-    return [self.errcode integerValue];
+    return 0;
 }
 
 - (NSString *)responseMsg {
     
-    return (self.errmsg)?:@"";
+    return @"";
 }
 
 @end
