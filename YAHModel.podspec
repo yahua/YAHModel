@@ -36,10 +36,9 @@ Pod::Spec.new do |s|
 
 
 
-  s.source_files  = "YAHModel"
+  s.source_files  = "YAHModel/*.{h,m}"
+  s.public_header_files = 'YAHModel/*.{h}'
   
   s.frameworks = "Foundation", "UIKit"
-
- 
 
 end
