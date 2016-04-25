@@ -47,6 +47,8 @@ NSURLSessionDataDelegate>
         queue.maxConcurrentOperationCount = 1;
         
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:queue];
+        
+        _requestStyle = YHRequestStyleForm;
     }
     
     return self;
@@ -88,7 +90,17 @@ NSURLSessionDataDelegate>
                               success:(void (^)(NSData *data))success
                               failure:(void (^)(NSError *error))failure {
     
-    NSURLRequest *request = [YAHURLRequestSerialization requestWithMethod:method URLString:[[NSURL URLWithString:url relativeToURL:self.baseURL] absoluteString] parameters:parameters header:headers];
+    NSURLRequest *request = nil;
+    switch (self.requestStyle) {
+        case YHRequestStyleRow:
+            request = [YAHURLRequestSerialization requestWithMethod:method URLString:url rowParameters:parameters rowHeader:headers];
+            break;
+        case YHRequestStyleForm:
+            request = [YAHURLRequestSerialization requestWithMethod:method URLString:url parameters:parameters header:headers];
+            break;
+        default:
+            break;
+    }
     
     __block NSURLSessionDataTask *dataTask = nil;
     

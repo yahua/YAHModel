@@ -7,8 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "YAHModelDefine.h"
 
 @interface YAHRequestManager : NSObject
+
+/** default is YHRequestStyleForm */
+@property (nonatomic, assign) YHRequestStyle requestStyle;
 
 + (instancetype)manager;
 

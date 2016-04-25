@@ -23,6 +23,15 @@ typedef NS_ENUM(NSUInteger, YHRequestStyle) {
     YHRequestStyleForm,  //form-data格式
 };
 
+
+typedef NS_ENUM(NSUInteger, YAHRequestState) {
+    YAHRequestStateRunning,
+    YAHRequestStateSuspended,
+    YAHRequestStateCanceling,
+    YAHRequestStateFailure,
+    YAHRequestStateSuccess,
+};
+
 #define BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
 
 typedef void (^YAHModelCompleteBlock)(NSError * _Nullable error);

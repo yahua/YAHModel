@@ -83,6 +83,7 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
     __weak __typeof(self)weakSelf = self;
     
     NSURLSession *session = [NSURLSession sharedSession];
+    [self requestStateChange:YAHRequestStateRunning];
     NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         __strong __typeof(weakSelf)self = weakSelf;
         
@@ -90,6 +91,8 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:YHNetworkingTaskDidCompleteNotification object:nil];
         });
+        
+        [self requestStateChange:error?YAHRequestStateFailure:YAHRequestStateSuccess];
         
         if (!error) {
             
@@ -119,6 +122,13 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
 - (NSString *)p_wholeRequestURLString {
     
     return  [[NSURL URLWithString:self.requestURL relativeToURL:self.baseURL] absoluteString];
+}
+
+- (void)requestStateChange:(YAHRequestState)state {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(requestStateChange:)]) {
+        [self.delegate requestStateChange:state];
+    }
 }
 
 #pragma mark - NSObject
