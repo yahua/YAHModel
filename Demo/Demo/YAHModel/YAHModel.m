@@ -38,7 +38,7 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
 
 - (void)analyseWithData:(NSData *)data complete:(void (^)(NSError *error))complete {
     
-    self.result = [YAHJSONAdapter modelFromJsonData:data modelClass:self.resultClass];
+    self.result = [YAHJSONAdapter objectFromJsonData:data objectClass:self.resultClass];
     
     if (self.result && [self.result isAdapterSuccess] ) {
         BLOCK_EXEC(complete, nil);
