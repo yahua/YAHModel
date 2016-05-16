@@ -10,6 +10,16 @@
 #import "YAHURLRequestSerialization.h"
 #import "YAHModelDefine.h"
 
+static dispatch_queue_t url_session_manager_creation_queue() {
+    static dispatch_queue_t af_url_session_manager_creation_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        af_url_session_manager_creation_queue = dispatch_queue_create("com.alamofire.networking.session.manager.creation", DISPATCH_QUEUE_SERIAL);
+    });
+    
+    return af_url_session_manager_creation_queue;
+}
+
 @interface YAHRequestManager () <
 NSURLSessionDelegate,
 NSURLSessionTaskDelegate,
@@ -37,6 +47,8 @@ NSURLSessionDataDelegate>
         queue.maxConcurrentOperationCount = 1;
         
         _session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:queue];
+        
+        _requestStyle = YHRequestStyleForm;
     }
     
     return self;
@@ -78,22 +90,39 @@ NSURLSessionDataDelegate>
                               success:(void (^)(NSData *data))success
                               failure:(void (^)(NSError *error))failure {
     
-    NSURLRequest *request = [YAHURLRequestSerialization requestWithMethod:method URLString:[[NSURL URLWithString:url relativeToURL:self.baseURL] absoluteString] parameters:parameters header:headers];
+    NSURLRequest *request = nil;
+    switch (self.requestStyle) {
+        case YHRequestStyleRow:
+            request = [YAHURLRequestSerialization requestWithMethod:method URLString:url rowParameters:parameters rowHeader:headers];
+            break;
+        case YHRequestStyleForm:
+            request = [YAHURLRequestSerialization requestWithMethod:method URLString:url parameters:parameters header:headers];
+            break;
+        default:
+            break;
+    }
     
-    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    __block NSURLSessionDataTask *dataTask = nil;
+    
+    dispatch_sync(url_session_manager_creation_queue(), ^{
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error) {
-                if (failure) {
-                    failure(error);
+        dataTask = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    if (failure) {
+                        failure(error);
+                    }
+                }else {
+                    if (success) {
+                        success(data);
+                    }
                 }
-            }else {
-                if (success) {
-                    success(data);
-                }
-            }
-        });
-    }];
+            });
+        }];
+    });
+    
+   
     
     [dataTask resume];
     

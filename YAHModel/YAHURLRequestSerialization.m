@@ -24,9 +24,6 @@
     
     NSMutableURLRequest *mutableRequest = [[NSMutableURLRequest alloc] initWithURL:url];
     mutableRequest.HTTPMethod = method;
-    if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
-        [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    }
     
     //添加头
     for(id key in headers.allKeys) {

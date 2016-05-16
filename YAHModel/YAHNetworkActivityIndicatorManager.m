@@ -231,7 +231,7 @@ static inline BOOL af_addMethod(Class class, SEL selector, Method method) {
 }
 
 - (void)networkRequestDidFinish:(NSNotification *)notification {
-#warning 对于取消的网络请求  不会减一  故取消判断
+
     //if ([YHNetworkRequestFromNotification(notification) URL]) {
         [self decrementActivityCount];
     //}

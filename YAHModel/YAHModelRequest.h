@@ -9,8 +9,17 @@
 #import "YAHModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
+
+@protocol YAHModelRequestDelegate <NSObject>
+
+@optional
+- (void)requestStateChange:(YAHRequestState)state;
+
+@end
+
 @interface YAHModelRequest : YAHModel
 
+@property (nonatomic, weak) id<YAHModelRequestDelegate> delegate;
 
 /** The dictParam to be encoded according to the client request serializer. */
 @property (nonatomic, strong, readonly) NSDictionary *dictParam;
