@@ -88,9 +88,11 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
         __strong __typeof(weakSelf)self = weakSelf;
         
        // NSURLSessionDataTask *task = [session dataTaskWithURL:response.URL];
+#if TARGET_OS_IOS
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:YHNetworkingTaskDidCompleteNotification object:nil];
         });
+#endif
         
         [self requestStateChange:error?YAHRequestStateFailure:YAHRequestStateSuccess];
         

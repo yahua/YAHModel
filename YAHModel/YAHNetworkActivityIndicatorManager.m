@@ -7,6 +7,9 @@
 //
 
 #import "YAHNetworkActivityIndicatorManager.h"
+
+#if TARGET_OS_IOS
+
 #import <objc/runtime.h>
 
 NSString * const YHNetworkingTaskDidResumeNotification = @"com.alamofire.networking.task.resume";
@@ -15,14 +18,14 @@ NSString * const YHNetworkingTaskDidCompleteNotification = @"com.alamofire.netwo
 
 static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityRepeat = 0.5;
 
-static NSURLRequest * YHNetworkRequestFromNotification(NSNotification *notification) {
-    
-    if ([[notification object] respondsToSelector:@selector(originalRequest)]) {
-        return [(NSURLSessionTask *)[notification object] originalRequest];
-    }
-    
-    return nil;
-}
+//static NSURLRequest * YHNetworkRequestFromNotification(NSNotification *notification) {
+//    
+//    if ([[notification object] respondsToSelector:@selector(originalRequest)]) {
+//        return [(NSURLSessionTask *)[notification object] originalRequest];
+//    }
+//    
+//    return nil;
+//}
 
 #pragma mark - YHURLSessionTaskSwizzling
 
@@ -220,6 +223,7 @@ static inline BOOL af_addMethod(Class class, SEL selector, Method method) {
         _activityCount = MAX(_activityCount - 1, 0);
 #pragma clang diagnostic pop
     }
+    
     [self didChangeValueForKey:@"activityCount"];
 }
 
@@ -238,3 +242,5 @@ static inline BOOL af_addMethod(Class class, SEL selector, Method method) {
 }
 
 @end
+
+#endif

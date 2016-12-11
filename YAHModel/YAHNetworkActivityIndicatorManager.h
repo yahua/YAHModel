@@ -14,6 +14,8 @@
 
 #import <UIKit/UIKit.h>
 
+#if TARGET_OS_IOS
+
 NS_ASSUME_NONNULL_BEGIN
 
 /**
@@ -71,5 +73,7 @@ extern NSString * const YHNetworkingTaskDidSuspendNotification;
 extern NSString * const YHNetworkingTaskDidCompleteNotification;
 
 NS_ASSUME_NONNULL_END
+
+#endif
 
 #endif

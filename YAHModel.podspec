@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YAHModel"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "JSON and Model networking framework."
 
   s.description  = <<-DESC
@@ -29,16 +29,28 @@ Pod::Spec.new do |s|
 
   s.author             = { "yahua" => "yahua523@163.com" }
   
-  s.platform     = :ios, "7.0"
   s.requires_arc = true
 
-  s.source       = { :git => "https://github.com/yahua/YAHModel.git", :tag => "0.0.6" }
+  s.source       = { :git => "https://github.com/yahua/YAHModel.git", :tag => "0.0.7" }
 
 
 
   s.source_files  = "YAHModel/*.{h,m}"
   s.public_header_files = 'YAHModel/*.{h}'
   
+pch_AF = <<-EOS
+#ifndef TARGET_OS_IOS
+  #define TARGET_OS_IOS TARGET_OS_IPHONE
+#endif
+#ifndef TARGET_OS_WATCH
+  #define TARGET_OS_WATCH 0
+#endif
+EOS
+  s.prefix_header_contents = pch_AF
+  
+  s.ios.deployment_target = '7.0'
+  s.watchos.deployment_target = '2.0'
+
   s.frameworks = "Foundation", "UIKit"
 
 end
