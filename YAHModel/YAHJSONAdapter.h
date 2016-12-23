@@ -32,12 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  将网络请求json转化为所需要的model
  *
- *  @param jsonData 支持nsdata nsstring nsarray nsdictionary
+ *  @param json 支持nsdata nsstring nsarray nsdictionary
  *  @param clazz    model的Class
  *
  *  @return 返回所需要的model
  */
-+ (id)objectFromJsonData:(id)jsonData objectClass:(Class)clazz;
++ (id)objectFromJson:(id)json objectClass:(Class)clazz;
 
 /**
  *  @author wangsw, 16-05-16 17:05:29

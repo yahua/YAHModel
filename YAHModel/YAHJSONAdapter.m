@@ -13,20 +13,21 @@
 
 #pragma mark - Public
 
-+ (id)objectFromJsonData:(id)jsonData objectClass:(Class)clazz {
++ (id)objectFromJson:(id)json objectClass:(Class)clazz {
     
-    if (nil == jsonData) {
+    if (nil == json) {
         return nil;
     }
-    if ([jsonData isKindOfClass:[NSData class]]) {
-        return [self p_objectFromData:jsonData objectClass:clazz];
-    }else if ([jsonData isKindOfClass:[NSString class]]) {
-        NSData* data = [jsonData dataUsingEncoding:NSUTF8StringEncoding];
-        return [self p_objectFromData:data objectClass:clazz];
-    }else if ([jsonData isKindOfClass:[NSDictionary class]]) {
-        return [self p_objectFromDictionary:jsonData class:clazz];
-    }else if ([jsonData isKindOfClass:[NSArray class]]) {
-        return [self p_objectFromArray:jsonData objectClass:clazz];
+    if ([json isKindOfClass:[NSData class]]) {
+        NSObject * obj = [NSJSONSerialization JSONObjectWithData:json options:0 error:nil];
+        return [self objectFromJson:obj objectClass:clazz];
+    }else if ([json isKindOfClass:[NSString class]]) {
+        NSData* data = [json dataUsingEncoding:NSUTF8StringEncoding];
+        return [self objectFromJson:data objectClass:clazz];
+    }else if ([json isKindOfClass:[NSDictionary class]]) {
+        return [self p_objectFromDictionary:json class:clazz];
+    }else if ([json isKindOfClass:[NSArray class]]) {
+        return [self p_objectFromArray:json objectClass:clazz];
     }
     
     return nil;
@@ -50,21 +51,6 @@
 }
 
 #pragma mark - Private
-
-+ (id)p_objectFromData:(NSData *)data objectClass:(Class)clazz {
-    
-    NSError *error = nil;
-    NSObject * obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-    if ( obj ) {
-        if ( [obj isKindOfClass:[NSDictionary class]] ) {
-            return [self p_objectFromDictionary:(NSDictionary *)obj class:clazz];
-        }else if ( [obj isKindOfClass:[NSArray class]] ) {
-            return [self p_objectFromArray:(NSArray *)obj objectClass:clazz];
-        }
-    }
-    
-    return nil;
-}
 
 + (id)p_objectFromArray:(NSArray *)array objectClass:(Class)clazz {
     
@@ -97,24 +83,23 @@
     if ( nil == object )
         return nil;
     
-    for ( Class clazzType = clazz; clazzType != [NSObject class]; ) {
+    for (Class clazzType = clazz; clazzType != [NSObject class];) {
         unsigned int		propertyCount = 0;
-        objc_property_t *	properties = class_copyPropertyList( clazzType, &propertyCount );
+        objc_property_t  *properties = class_copyPropertyList(clazzType, &propertyCount);
         
         for ( NSUInteger i = 0; i < propertyCount; i++ ) {
-            const char *	name = property_getName(properties[i]);
-            NSString *		propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
-            const char *	attr = property_getAttributes(properties[i]);
-            Class		    typeClass = [self p_typeOfAttribute:attr];
+            const char       *name = property_getName(properties[i]);
+            NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
+            const char       *attr = property_getAttributes(properties[i]);
+            Class		typeClass = [self p_typeOfAttribute:attr];
             if (!typeClass) {
                 return nil;
             }
             
             //真正的json key
             NSString *propertyKey = [[clazzType JSONKeyPathsByPropertyKey] objectForKey:propertyName];
-            
-            NSObject *	tempValue = [dic objectForKey:propertyKey];
-            NSObject *	value = nil;
+            NSObject   *tempValue = [dic objectForKey:propertyKey];
+            NSObject       *value = nil;
             
             if ( tempValue ) {
                 if ([typeClass isSubclassOfClass:[NSNumber class]]) {
@@ -127,21 +112,11 @@
                         if (classString) {
                             Class convertClass = NSClassFromString(classString);
                             if (convertClass) {
-                                NSMutableArray * arrayTemp = [NSMutableArray array];
-                                for (NSObject * tempObject in (NSArray *)tempValue) {
-                                    if ([tempObject isKindOfClass:[NSDictionary class]]) { //自定义model
-                                        [arrayTemp addObject:[self p_objectFromDictionary:(NSDictionary *)tempObject class:convertClass]];
-                                    }else {   //非自定义
-                                        [arrayTemp addObject:tempObject];
-                                    }
-                                }
-                                value = arrayTemp;
-                            }
-                            else {
+                                value = [self p_objectFromArray:(NSArray *)tempValue objectClass:convertClass];
+                            }else {
                                 value = tempValue;
                             }
-                        }
-                        else {
+                        }else {
                             value = tempValue;
                         }
                     }
