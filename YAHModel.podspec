@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YAHModel"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "JSON and Model networking framework."
 
   s.description  = <<-DESC
@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   
   s.requires_arc = true
 
-  s.source       = { :git => "https://github.com/yahua/YAHModel.git", :tag => "0.1.2" }
+  s.source       = { :git => "https://github.com/yahua/YAHModel.git", :tag => "0.1.3" }
 
 
 
