@@ -38,7 +38,7 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
 
 - (void)analyseWithData:(NSData *)data complete:(void (^)(NSError *error))complete {
     
-    self.result = [YAHJSONAdapter objectFromJson:data objectClass:self.resultClass];
+    self.result = [YAHJSONAdapter objectFromJsonData:data objectClass:self.resultClass];
     
     if (self.result && [self.result isAdapterSuccess] ) {
         BLOCK_EXEC(complete, nil);
@@ -47,19 +47,17 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
         errMsg = (errMsg)?:@"数据解析失败！！！";
         BLOCK_EXEC(complete, [NSError errorWithDomain:errMsg code:YAHRequestErrorAdapter userInfo:nil]);
     }
-
 }
 
 - (NSString *)getCacheKey {
 
-    NSString *key = [[self class] description];
-    return key;
+    return nil;
 }
 
 - (BOOL)loadCache {
 
     @try {
-        self.result = [NSKeyedUnarchiver unarchiveObjectWithFile:[self p_archiverFilePath]];
+        self.result = [NSKeyedUnarchiver unarchiveObjectWithFile:[self p_getCahceURL]];
         return YES;
     }
     @catch (NSException *exception) {
@@ -73,8 +71,7 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
         return NO;
     }
     @try {
-        [NSKeyedArchiver archiveRootObject:self.result toFile:[self p_archiverFilePath]];
-        return YES;
+        return [NSKeyedArchiver archiveRootObject:self.result toFile:[self p_getCahceURL]];
     }
     @catch (NSException *exception) {
         return NO;
@@ -83,24 +80,42 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
 
 - (BOOL)clearCache {
     
-    return [[NSFileManager defaultManager] removeItemAtPath:[self p_archiverFilePath] error:nil];
+    return [[NSFileManager defaultManager] removeItemAtPath:[self p_getCahceURL] error:nil];
 }
 
++ (void)clearAllCache {
+    
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:[self p_archiverFilePath] error:&error];
+    NSLog(@"11");
+}
 
 #pragma mark - Private
 
-//归档path
-- (NSString *)p_archiverFilePath {
+- (NSString *)p_getCahceURL {
     
-    NSString *folderName =[NSString stringWithFormat:@"Archiver"];
+    NSString *key = [self getCacheKey];
+    if (!key) {
+        key = [[self class] description];
+    }
+    return [NSString stringWithFormat:@"%@/%@", [[self class] p_archiverFilePath], key];
+}
+
+//归档path
++ (NSString *)p_archiverFilePath {
+    
+    NSString *folderName = [NSString stringWithFormat:@"%@_Cache", [[self class] description]];
+    if (![[[self class] description] isEqualToString:[[YAHModel class] description]]) {
+        folderName = [NSString stringWithFormat:@"YAHModel_Cache/%@", folderName];
+    }
+    
     NSFileManager *fm = [[NSFileManager alloc] init];
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *optionPath = [documentPath stringByAppendingPathComponent:folderName];
     if (![fm fileExistsAtPath:optionPath]) {
         [fm createDirectoryAtPath:optionPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    
-    return [NSString stringWithFormat:@"%@/%@", optionPath, [self getCacheKey]];
+    return optionPath;
 }
 
 

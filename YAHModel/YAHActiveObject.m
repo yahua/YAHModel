@@ -42,14 +42,31 @@ YAHJSONSerializing>
     }
 }
 
+#pragma mark - NSCoping
+
+- (id)copyWithZone:(NSZone *)zone {
+    
+    YAHActiveObject *result = [[[self class] allocWithZone:zone] init];
+    
+    NSArray *propertyNames = [[self class] p_propertyKeys].allObjects;
+    for (NSString *propertyName in propertyNames) {
+        id propertyValue = [self valueForKey:propertyName];
+        if ([propertyValue respondsToSelector:@selector(copyWithZone:)]) {
+            propertyValue = [propertyValue copyWithZone:zone];
+        }
+        [result setValue:propertyValue forKey:propertyName];
+    }
+    return result;
+}
+
 #pragma mark - Public
 
-+ (NSDictionary *)changeJSONPropertyKey {
++ (NSDictionary *)bridgePropertyAndJSON {
     
     return nil;
 }
 
-+ (NSDictionary *)convertClassString {
++ (NSDictionary *)bridgeClassAndArray {
     
     return nil;
 }
@@ -60,7 +77,7 @@ YAHJSONSerializing>
     
     NSArray *propertyKeys = [[self class] p_propertyKeys].allObjects;
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithObjects:propertyKeys forKeys:propertyKeys];
-    NSDictionary *changeJSONKey = [self changeJSONPropertyKey];
+    NSDictionary *changeJSONKey = [self bridgePropertyAndJSON];
     if (changeJSONKey) {
         [dic setValuesForKeysWithDictionary:changeJSONKey];
     }
@@ -69,7 +86,7 @@ YAHJSONSerializing>
 
 + (NSDictionary *)convertClassStringDictionary {
     
-    return [self convertClassString];
+    return [self bridgeClassAndArray];
 }
 
 #pragma mark - Private
@@ -93,5 +110,9 @@ YAHJSONSerializing>
     return keys;
 }
 
+- (NSString *)description {
+    
+    return [NSString stringWithFormat:@"<%@: %p> %@", self.class, self, [YAHJSONAdapter jsonStringFromObject:self]];
+}
 
 @end

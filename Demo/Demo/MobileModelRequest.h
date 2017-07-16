@@ -21,7 +21,7 @@
 
 @interface MobileRespone : TestDataResponseInfo
 
-@property (nonatomic, strong) MobileInfo *retData;
+@property (nonatomic, strong) MobileInfo *data;
 
 @end
 

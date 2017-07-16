@@ -10,6 +10,11 @@
 
 @implementation MobileModel
 
+- (NSString *)getCacheKey {
+    
+    return self.phone;
+}
+
 - (instancetype)init
 {
     self = [super initWithResultClass:[MobileRespone class]];

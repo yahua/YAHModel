@@ -12,7 +12,7 @@
 
 - (BOOL)isAdapterSuccess {
     
-    if (self.errNum == 0) {
+    if (self.code == 0) {
         return YES;
     }
     
@@ -21,7 +21,7 @@
 
 - (NSInteger)responseCode {
     
-    return self.errNum;
+    return self.code;
 }
 
 - (NSString *)responseMsg {

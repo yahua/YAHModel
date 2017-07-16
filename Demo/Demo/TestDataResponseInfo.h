@@ -10,7 +10,7 @@
 
 @interface TestDataResponseInfo : YAHDataResponseInfo
 
-@property (nonatomic, assign) NSInteger errNum;
+@property (nonatomic, assign) NSInteger code;
 @property (nonatomic, strong) NSString *retMsg;
 
 @end

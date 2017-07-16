@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YAHActiveObject : NSObject <NSCoding>
+@interface YAHActiveObject : NSObject <NSCoding, NSCopying>
 
 /**
  *  属性名和json key不一致则需要重写该方法   默认 return nil
@@ -16,15 +16,15 @@
  *
  *  @return 返回property与json key 相对应的dictionary
  */
-+ (nullable NSDictionary *)changeJSONPropertyKey;
++ (nullable NSDictionary *)bridgePropertyAndJSON;
 
 
 /**
- *  属性中包含NSArray或者NSDictionary 将类名与属性名绑定  默认 return nil
+ *  属性中包含NSArray 将类名与属性名绑定  默认 return nil
  *  例如：return @{@"rows":@"EntityNoteInfo"};
  *
- *  @return 返回property与自定义类 相对应的dictionary
+ *  @return 返回数组与自定义类 相对应的dictionary
  */
-+ (nullable NSDictionary *)convertClassString;
++ (nullable NSDictionary *)bridgeClassAndArray;
 
 @end

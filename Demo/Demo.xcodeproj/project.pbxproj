@@ -28,6 +28,8 @@
 		1968D6AD1CE9CA20002D808C /* YAHNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1968D6A31CE9CA20002D808C /* YAHNetworkActivityIndicatorManager.m */; };
 		1968D6AE1CE9CA20002D808C /* YAHRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1968D6A51CE9CA20002D808C /* YAHRequestManager.m */; };
 		1968D6AF1CE9CA20002D808C /* YAHURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1968D6A71CE9CA20002D808C /* YAHURLRequestSerialization.m */; };
+		2CCD03661F1B1A7E0078C923 /* TestMedelRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD03641F1B1A7E0078C923 /* TestMedelRequestViewController.m */; };
+		2CCD03671F1B1A7E0078C923 /* TestMedelRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CCD03651F1B1A7E0078C923 /* TestMedelRequestViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,9 @@
 		1968D6A51CE9CA20002D808C /* YAHRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHRequestManager.m; sourceTree = "<group>"; };
 		1968D6A61CE9CA20002D808C /* YAHURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAHURLRequestSerialization.h; sourceTree = "<group>"; };
 		1968D6A71CE9CA20002D808C /* YAHURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAHURLRequestSerialization.m; sourceTree = "<group>"; };
+		2CCD03631F1B1A7E0078C923 /* TestMedelRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMedelRequestViewController.h; sourceTree = "<group>"; };
+		2CCD03641F1B1A7E0078C923 /* TestMedelRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMedelRequestViewController.m; sourceTree = "<group>"; };
+		2CCD03651F1B1A7E0078C923 /* TestMedelRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestMedelRequestViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +152,9 @@
 				190CD9801CB3D97C002AE016 /* ViewController.h */,
 				190CD9811CB3D97C002AE016 /* ViewController.m */,
 				190CD9831CB3D97C002AE016 /* Main.storyboard */,
+				2CCD03631F1B1A7E0078C923 /* TestMedelRequestViewController.h */,
+				2CCD03641F1B1A7E0078C923 /* TestMedelRequestViewController.m */,
+				2CCD03651F1B1A7E0078C923 /* TestMedelRequestViewController.xib */,
 				190CD9861CB3D97C002AE016 /* Assets.xcassets */,
 				190CD9881CB3D97C002AE016 /* LaunchScreen.storyboard */,
 				190CD98B1CB3D97C002AE016 /* Info.plist */,
@@ -194,6 +202,7 @@
 		1968D6961CE9CA20002D808C /* YAHModel */ = {
 			isa = PBXGroup;
 			children = (
+				1968D69F1CE9CA20002D808C /* YAHModelDefine.h */,
 				1968D6971CE9CA20002D808C /* YAHActiveObject.h */,
 				1968D6981CE9CA20002D808C /* YAHActiveObject.m */,
 				1968D6991CE9CA20002D808C /* YAHDataResponseInfo.h */,
@@ -202,7 +211,6 @@
 				1968D69C1CE9CA20002D808C /* YAHJSONAdapter.m */,
 				1968D69D1CE9CA20002D808C /* YAHModel.h */,
 				1968D69E1CE9CA20002D808C /* YAHModel.m */,
-				1968D69F1CE9CA20002D808C /* YAHModelDefine.h */,
 				1968D6A01CE9CA20002D808C /* YAHModelRequest.h */,
 				1968D6A11CE9CA20002D808C /* YAHModelRequest.m */,
 				1968D6A21CE9CA20002D808C /* YAHNetworkActivityIndicatorManager.h */,
@@ -283,6 +291,7 @@
 				TargetAttributes = {
 					190CD9761CB3D97C002AE016 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 28T9NSVTY8;
 					};
 					190CD98F1CB3D97C002AE016 = {
 						CreatedOnToolsVersion = 7.3;
@@ -321,6 +330,7 @@
 			files = (
 				190CD98A1CB3D97C002AE016 /* LaunchScreen.storyboard in Resources */,
 				190CD9871CB3D97C002AE016 /* Assets.xcassets in Resources */,
+				2CCD03671F1B1A7E0078C923 /* TestMedelRequestViewController.xib in Resources */,
 				190CD9851CB3D97C002AE016 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +366,7 @@
 				1968D6AB1CE9CA20002D808C /* YAHModel.m in Sources */,
 				190CD9821CB3D97C002AE016 /* ViewController.m in Sources */,
 				190CD97F1CB3D97C002AE016 /* AppDelegate.m in Sources */,
+				2CCD03661F1B1A7E0078C923 /* TestMedelRequestViewController.m in Sources */,
 				195F6D9F1CB4FBA400B76C9F /* MobileModelRequest.m in Sources */,
 				190CD97C1CB3D97C002AE016 /* main.m in Sources */,
 				195F6DA21CB510A100B76C9F /* MobileModel.m in Sources */,
@@ -504,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28T9NSVTY8;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -516,6 +528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 28T9NSVTY8;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

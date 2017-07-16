@@ -14,8 +14,8 @@
     
     self = [super initWithURL:url resultClass:resultClass];
     if (self) {
-        self.baseURL = [NSURL URLWithString:@"http://apis.baidu.com/apistore/"];
-        [self setValue:@"百度的 apistore 的key" forHTTPHeaderField:@"apikey"];
+        self.baseURL = [NSURL URLWithString:@"http://cx.shouji.360.cn"];
+        //[self setValue:@"百度的 apistore 的key" forHTTPHeaderField:@"apikey"];
     }
     return self;
 }

@@ -48,6 +48,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (BOOL)clearCache;
 
+
+/**
+ 清除调用model下的所有缓存，  如果[YAHModel clearAllCache]则清除所有继承YAHModel的缓存
+ */
++ (void)clearAllCache;
+
 @end
 
 NS_ASSUME_NONNULL_END

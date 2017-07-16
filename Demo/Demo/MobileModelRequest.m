@@ -20,7 +20,7 @@
 
 - (instancetype)init
 {
-    self = [super initWithURL:@"mobilenumber/mobilenumber" resultClass:[MobileRespone class]];
+    self = [super initWithURL:@"phonearea.php" resultClass:[MobileRespone class]];
     if (self) {
         self.method = @"GET";
     }
@@ -29,10 +29,22 @@
 
 - (void)getNetworkData {
     
-    NSDictionary *params = @{@"phone": @"18559197250"};
+    NSDictionary *params = @{@"number": @"18559197250"};
     [super requestWithParameters:params complete:^(NSError * _Nullable error) {
         
+        if (error) {
+            NSLog(@"MobileModelRequest fail");
+        }else {
+            [self saveCache];
+            NSLog(@"MobileModelRequest success");
+        }
     }];
 }
+
+- (NSString *)getCacheKey {
+    
+    return @"18559197250";
+}
+
 
 @end

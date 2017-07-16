@@ -11,4 +11,6 @@
 
 @interface MobileModel : YAHModel
 
+@property (nonatomic, copy) NSString *phone;
+
 @end
