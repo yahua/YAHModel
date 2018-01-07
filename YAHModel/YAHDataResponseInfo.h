@@ -18,8 +18,10 @@
  */
 - (BOOL)isAdapterSuccess;
 
-- (NSInteger)responseCode;
+/**
+ 服务端返回字符串提示
 
+ */
 - (NSString *)responseMsg;
 
 @end

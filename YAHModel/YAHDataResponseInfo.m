@@ -15,11 +15,6 @@
     return NO;
 }
 
-- (NSInteger)responseCode {
-    
-    return 0;
-}
-
 - (NSString *)responseMsg {
     
     return @"";

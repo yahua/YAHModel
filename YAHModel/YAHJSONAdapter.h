@@ -50,6 +50,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)jsonStringFromObject:(id)object;
 
+
+/**
+ 将类转化为属性的字典
+
+ @param object 对象
+ @return 字典
+ */
 + (NSDictionary *)jsonDictionaryFromObject:(id)object;
 
 @end

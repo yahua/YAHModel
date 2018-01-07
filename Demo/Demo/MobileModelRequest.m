@@ -27,17 +27,19 @@
     return self;
 }
 
-- (void)getNetworkData {
+- (void)getNetworkData:(void(^)(NSError *error))block {
     
     NSDictionary *params = @{@"number": @"18559197250"};
     [super requestWithParameters:params complete:^(NSError * _Nullable error) {
         
         if (error) {
+            
             NSLog(@"MobileModelRequest fail");
         }else {
             [self saveCache];
             NSLog(@"MobileModelRequest success");
         }
+        YAH_BLOCK_EXEC(block, error);
     }];
 }
 

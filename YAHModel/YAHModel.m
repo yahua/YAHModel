@@ -40,12 +40,12 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
     
     self.result = [YAHJSONAdapter objectFromJsonData:data objectClass:self.resultClass];
     
-    if (self.result && [self.result isAdapterSuccess] ) {
-        BLOCK_EXEC(complete, nil);
+    if (self.result && [self.result isAdapterSuccess]) {
+        YAH_BLOCK_EXEC(complete, nil);
     }else {
         NSString *errMsg = [self.result responseMsg];
         errMsg = (errMsg)?:@"数据解析失败！！！";
-        BLOCK_EXEC(complete, [NSError errorWithDomain:errMsg code:YAHRequestErrorAdapter userInfo:nil]);
+        YAH_BLOCK_EXEC(complete, [NSError errorWithDomain:errMsg code:YAHRequestErrorAdapter userInfo:nil]);
     }
 }
 
@@ -87,7 +87,6 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
     
     NSError *error = nil;
     [[NSFileManager defaultManager] removeItemAtPath:[self p_archiverFilePath] error:&error];
-    NSLog(@"11");
 }
 
 #pragma mark - Private

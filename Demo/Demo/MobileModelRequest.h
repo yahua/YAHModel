@@ -15,7 +15,6 @@
 @property (nonatomic, copy) NSString *supplier;
 @property (nonatomic, copy) NSString *province;
 @property (nonatomic, copy) NSString *city;
-@property (nonatomic, copy) NSString *suit;
 
 @end
 
@@ -27,6 +26,6 @@
 
 @interface MobileModelRequest : TestModelRequest
 
-- (void)getNetworkData;
+- (void)getNetworkData:(void(^)(NSError *error))block;
 
 @end

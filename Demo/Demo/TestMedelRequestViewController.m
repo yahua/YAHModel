@@ -27,7 +27,9 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)antionRequest:(id)sender {
-    [self.mobileModelRequest getNetworkData];
+    [self.mobileModelRequest getNetworkData:^(NSError *error) {
+        NSLog(@"11");
+    }];
 }
 - (IBAction)antionClearRequsrtCache:(id)sender {
     [self.mobileModelRequest clearCache];
@@ -37,6 +39,11 @@
 }
 - (IBAction)actionClearYAHModelCache:(id)sender {
     [YAHModel clearAllCache];
+}
+- (IBAction)actionLoadCache:(id)sender {
+    
+    [self.mobileModelRequest loadCache];
+    NSLog(@"");
 }
 
 - (MobileModelRequest *)mobileModelRequest {

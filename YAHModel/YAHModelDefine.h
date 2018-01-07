@@ -32,7 +32,19 @@ typedef NS_ENUM(NSUInteger, YAHRequestState) {
     YAHRequestStateSuccess,
 };
 
-#define BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
+/////////debug环境判断//////////////
+#ifdef DEBUG
+
+#define LRString [NSString stringWithFormat:@"%s", __FILE__].lastPathComponent
+#define YAHLog(...) printf("%s 第%d行: %s\n\n", [LRString UTF8String] ,__LINE__, [[NSString stringWithFormat:__VA_ARGS__] UTF8String]);
+
+#else
+
+#define YAHLog(format, ...)
+
+#endif
+
+#define YAH_BLOCK_EXEC(block, ...) if (block) { block(__VA_ARGS__); };
 
 typedef void (^YAHModelCompleteBlock)(NSError * _Nullable error);
 
