@@ -66,13 +66,13 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
     
     NSURLRequest *request = nil;
     switch (self.requestStyle) {
+        case YHRequestStyleUnKnow:
+            break;
         case YHRequestStyleRow:
             request = [YAHURLRequestSerialization requestWithMethod:self.method URLString:[self p_wholeRequestURLString] rowParameters:parameters rowHeader:self.HTTPHeaders];
             break;
         case YHRequestStyleForm:
             request = [YAHURLRequestSerialization requestWithMethod:self.method URLString:[self p_wholeRequestURLString] parameters:parameters header:self.HTTPHeaders];
-            break;
-        default:
             break;
     }
     if (!request) {

@@ -92,13 +92,13 @@ NSURLSessionDataDelegate>
     
     NSURLRequest *request = nil;
     switch (self.requestStyle) {
+        case YHRequestStyleUnKnow:
+            break;
         case YHRequestStyleRow:
             request = [YAHURLRequestSerialization requestWithMethod:method URLString:url rowParameters:parameters rowHeader:headers];
             break;
         case YHRequestStyleForm:
             request = [YAHURLRequestSerialization requestWithMethod:method URLString:url parameters:parameters header:headers];
-            break;
-        default:
             break;
     }
     
