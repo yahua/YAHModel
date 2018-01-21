@@ -123,9 +123,11 @@
                     value = [self p_asNSString:tempValue];
                 }else if ([typeClass isSubclassOfClass:[NSArray class]]) {
                     if ([tempValue isKindOfClass:[NSArray class]] ) {
-                        NSString *classString = [[clazzType convertClassStringDictionary] objectForKey:propertyName];
-                        if (classString) {
-                            Class convertClass = NSClassFromString(classString);
+                        id convertClass = [[clazzType convertClassStringDictionary] objectForKey:propertyName];
+                        if (convertClass) {
+                            if ([convertClass isKindOfClass:[NSString class]]) {
+                                convertClass = NSClassFromString(convertClass);
+                            }
                             if (convertClass) {
                                 value = [self p_objectFromArray:(NSArray *)tempValue objectClass:convertClass];
                             }
