@@ -9,7 +9,7 @@
 #ifndef YAHModelDefine_h
 #define YAHModelDefine_h
 
-typedef NS_ENUM(NSUInteger, YAHRequestErrorCode) {
+typedef NS_ENUM(NSInteger, YAHRequestErrorCode) {
     YAHRequestErrorUnknow = -1,
     YAHRequestErrorCancel = 999,
     YAHRequestErrorParameter = 1000,  //参数错误
