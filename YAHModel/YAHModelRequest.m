@@ -103,9 +103,9 @@ static void *YHModelCachedPropertyKeysKey = &YHModelCachedPropertyKeysKey;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                YAHLog(@"YHModel request Fail:%@", error);
+                YAHModelLog(@"YHModel request Fail:%@", error);
                 if (error.code==NSURLErrorCancelled) {
-                    YAHLog(@"%@请求取消", [self class]);
+                    YAHModelLog(@"%@请求取消", [self class]);
                     YAH_BLOCK_EXEC(complete, [NSError errorWithDomain:@"" code:YAHRequestErrorCancel userInfo:nil]);
                      return;
                 }
