@@ -27,7 +27,10 @@ YAHJSONSerializing>
     if (self) {
         NSArray *propertyNames = [[self class] p_propertyKeys].allObjects;
         for (NSString *propertyName in propertyNames) {
-            [self setValue:[coder decodeObjectForKey:propertyName] forKey:propertyName];
+            id value = [coder decodeObjectForKey:propertyName];
+            if (value) {
+                [self setValue:value forKey:propertyName];
+            }
         }
     }
     return self;
