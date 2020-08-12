@@ -35,9 +35,14 @@
 + (NSString *)jsonStringFromObject:(id)object {
     
     NSString *json = nil;
-    NSDictionary *dic = [self p_dictionaryFromObject:object];
-    if (dic) {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    id t_d = nil;
+    if ([object isKindOfClass:NSArray.class]) {
+        t_d = [self p_arrayWithArray:object];
+    }else {
+        t_d  = [self p_dictionaryFromObject:object];
+    }
+    if (t_d) {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:t_d options:NSJSONWritingPrettyPrinted error:nil];
         json = [[NSString alloc] initWithData:jsonData
                                      encoding:NSUTF8StringEncoding];
     }
@@ -165,6 +170,22 @@
     }
     
     return object;
+}
+
++ (NSArray *)p_arrayWithArray:(NSArray *)objects {
+    
+    if (![objects isKindOfClass:NSArray.class]) {
+        return nil;
+    }
+    NSMutableArray *tmpList = [NSMutableArray arrayWithCapacity:1];
+    for (id object in objects) {
+        NSDictionary *dict = [self p_dictionaryFromObject:object];
+        if (!dict) {
+            continue;
+        }
+        [tmpList addObject:dict];
+    }
+    return [tmpList copy];
 }
 
 + (NSDictionary *)p_dictionaryFromObject:(id)object {
@@ -295,11 +316,22 @@
 + (Class)p_typeOfAttribute:(const char *)attr {
     
     @try {
-        const char *property_type = attr;
-        NSString *propertyType = [[NSString alloc] initWithBytes:property_type length:strlen(property_type) encoding:NSASCIIStringEncoding];
         
-        if (property_type[1] == '@') {
-            return NSClassFromString([propertyType componentsSeparatedByString:@"\""][1]);
+        NSString *attrs = @(attr);
+        NSUInteger dotLoc = [attrs rangeOfString:@","].location;
+        NSString *code = nil;
+        NSUInteger loc = 1;
+        if (dotLoc == NSNotFound) { // 没有,
+            code = [attrs substringFromIndex:loc];
+        } else {
+            code = [attrs substringWithRange:NSMakeRange(loc, dotLoc - loc)];
+        }
+        
+        if ([code isEqualToString:@"@"]) {//id类型
+            return [NSObject class];
+        }else if (code.length > 3 && [code hasPrefix:@"@\""]) {
+            code = [code substringWithRange:NSMakeRange(2, code.length - 3)];
+            return NSClassFromString(code);
         }else {  //基本类型
             return [NSNumber class];
         }
