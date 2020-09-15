@@ -262,12 +262,16 @@
             
             NSObject * obj = [object valueForKey:propertyName];
             if ( obj ) {
-                if ([typeClass isSubclassOfClass:[NSNumber class]] ||
-                    [typeClass isSubclassOfClass:[NSString class]]) {
+                if ([typeClass isSubclassOfClass:NSNumber.class] ||
+                    [typeClass isSubclassOfClass:NSString.class] ||
+                    (NSObject.class == typeClass && ([obj isKindOfClass:NSNumber.class] ||
+                                                     [obj isKindOfClass:NSString. class]))) {
                     [result setObject:obj forKey:propertyName];
-                }else if ( [NSDate class] == typeClass ){
+                }else if ( [NSDate class] == typeClass ||
+                          (NSObject.class == typeClass && [obj isKindOfClass:NSDate.class])){
                     [result setObject:[obj description] forKey:propertyName];
-                }else if ( [NSArray class] == typeClass ) {
+                }else if ( [NSArray class] == typeClass ||
+                          (NSObject.class == typeClass && [obj isKindOfClass:NSArray.class])) {
                     NSMutableArray * array = [NSMutableArray array];
                     for ( NSObject * elem in (NSArray *)obj ) {
                         NSDictionary * dict = [self p_dictionaryFromObject:elem];
@@ -278,7 +282,8 @@
                         }
                     }
                     [result setObject:array forKey:propertyName];
-                }else if ( [NSDictionary class] == typeClass ) {
+                }else if ( [NSDictionary class] == typeClass ||
+                          (NSObject.class == typeClass && [obj isKindOfClass:NSDictionary.class])) {
                     NSMutableDictionary * dict = [NSMutableDictionary dictionary];
                     for ( NSString *key in ((NSDictionary *)obj).allKeys ) {
                         NSObject *val = [(NSDictionary *)obj objectForKey:key];
