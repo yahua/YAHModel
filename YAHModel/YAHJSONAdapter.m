@@ -42,7 +42,7 @@
         t_d  = [self p_dictionaryFromObject:object];
     }
     if (t_d) {
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:t_d options:NSJSONWritingPrettyPrinted error:nil];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:t_d options:0 error:nil];
         json = [[NSString alloc] initWithData:jsonData
                                      encoding:NSUTF8StringEncoding];
     }
